@@ -12,10 +12,11 @@ oracledb.getConnection(
       return;
     }
     connection.execute(
-      `SELECT country, name, percentage
-       FROM language
-       WHERE percentage = :id`,
-      [13],  // bind value for :id
+      `SELECT *
+       FROM repository
+       WHERE rownum <='10'
+       Order by watch_count DESC`,
+     //13],  // bind value for :id
       function(err, result) {
         if (err) {
           console.error(err.message);
